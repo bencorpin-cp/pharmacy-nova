@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('drugs', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\DrugManufacturer::class, "manufacturer_id")->constrained("drug_manufacturers")->cascadeOnDelete();
             $table->string("name");
+            $table->float("price");
             $table->timestamps();
         });
     }
