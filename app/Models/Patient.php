@@ -14,8 +14,13 @@ class Patient extends Model
         return $this->belongsTo(Doctor::class);
     }
 
-    public function drugs()
+    public function seens()
     {
-        return $this->hasMany(Drug::class);
+        return $this->hasMany(Seen::class);
+    }
+
+    public function prescriptions()
+    {
+        return $this->hasMany(Prescription::class);
     }
 }

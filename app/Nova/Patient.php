@@ -26,7 +26,7 @@ class Patient extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -48,7 +48,8 @@ class Patient extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make("Doctor"),
+            BelongsTo::make("Doctor")
+                ->showCreateRelationButton(),
 
             Text::make("Name"),
 
@@ -62,7 +63,9 @@ class Patient extends Resource
 
             Number::make("Contact Number", "contact_no"),
 
-            HasMany::make("Drugs"),
+            HasMany::make("Seens"),
+
+            HasMany::make("Prescriptions"),
         ];
     }
 
