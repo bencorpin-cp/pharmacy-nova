@@ -9,8 +9,8 @@ class Employee extends Model
 {
     use HasFactory;
 
-    public function pharmacy()
+    public function works()
     {
-        return $this->belongsTo(Pharmacy::class);
+        return $this->hasMany(Work::class);
     }
 }

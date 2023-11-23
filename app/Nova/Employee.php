@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -43,9 +44,10 @@ class Employee extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make("Name"),
+            Text::make("Name")
+                ->rules("required", "unique:employees"),
 
-            BelongsTo::make("Pharmacy"),
+            HasMany::make("Work Schedules", "works", Work::class),
         ];
     }
 
