@@ -47,7 +47,8 @@ class Doctor extends Resource
             Text::make("Name")
                 ->rules("required"),
 
-            Text::make("Speciality"),
+            Text::make("Speciality")
+                ->rules("required"),
 
             HasMany::make("Patients"),
         ];
