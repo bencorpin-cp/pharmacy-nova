@@ -47,7 +47,8 @@ class Work extends Resource
             BelongsTo::make("Employee")
                 ->showCreateRelationButton(),
 
-            BelongsTo::make("Pharmacy"),
+            BelongsTo::make("Pharmacy")
+                ->showCreateRelationButton(),
 
             DateTime::make("Shift Start")
                 ->displayUsing(function ($value){
