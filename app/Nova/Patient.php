@@ -51,15 +51,18 @@ class Patient extends Resource
             BelongsTo::make("Doctor")
                 ->showCreateRelationButton(),
 
-            Text::make("Name"),
+            Text::make("Name")
+                ->showWhenPeeking(),
 
             Select::make("Sex")
                 ->options([
                     "Male" => "Male",
                     "Female" => "Female",
-                ]),
+                ])
+                ->showWhenPeeking(),
 
-            Textarea::make("Address"),
+            Textarea::make("Address")
+                ->showWhenPeeking(),
 
             Number::make("Contact Number", "contact_no"),
 
