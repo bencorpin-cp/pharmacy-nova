@@ -2,11 +2,9 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Currency;
-use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -26,7 +24,7 @@ class Drug extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'trade_name';
 
     /**
      * The columns that should be searched.
@@ -61,6 +59,8 @@ class Drug extends Resource
                    ];
                 })
                 ->showCreateRelationButton(),
+
+            HasMany::make("Prescriptions with " . $this->trade_name, "prescriptions", Prescription::class),
         ];
     }
 

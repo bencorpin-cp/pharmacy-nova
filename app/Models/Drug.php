@@ -26,4 +26,9 @@ class Drug extends Model
             ->withTimestamps();
     }
 
+    public function prescriptions()
+    {
+        return $this->hasMany(Prescription::class);
+    }
+
 }
