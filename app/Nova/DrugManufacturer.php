@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -44,9 +45,15 @@ class DrugManufacturer extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make("Name"),
+            Text::make("Name")
+                ->rules("required"),
 
-            Textarea::make("Address"),
+            Textarea::make("Address")
+                ->rules("required"),
+
+            HasMany::make("Drugs"),
+
+            HasMany::make("Contracts"),
         ];
     }
 
