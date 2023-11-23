@@ -4,7 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -46,14 +48,19 @@ class Drug extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make("Name"),
+            Text::make("Trade Name")
+                ->rules("required"),
 
-            Number::make("Price")
-                ->displayUsing(function ($value){
-                    return number_format($value, 2, ".");
-                }),
+            BelongsTo::make("Drug Manufacturer")
+                ->showCreateRelationButton(),
 
-            BelongsTo::make("Drug Manufacturer"),
+            BelongsToMany::make("Available Pharmacies", "pharmacies", Pharmacy::class)
+                ->fields(function (){
+                   return [
+                       Number::make("Price"),
+                   ];
+                })
+                ->showCreateRelationButton(),
         ];
     }
 
