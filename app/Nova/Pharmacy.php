@@ -3,6 +3,8 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -50,6 +52,17 @@ class Pharmacy extends Resource
             Text::make("Fax Number", "fax"),
 
             Textarea::make("Address"),
+
+            BelongsToMany::make("Selling Drugs", "drugs", Drug::class)
+                ->fields(function (){
+                   return [
+                     Number::make("Price"),
+                   ];
+                }),
+
+            HasMany::make("Employees Schedules", "works", Work::class),
+
+            HasMany::make("Contracts"),
         ];
     }
 
