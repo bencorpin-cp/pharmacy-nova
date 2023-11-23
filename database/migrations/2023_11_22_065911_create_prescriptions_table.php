@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Patient::class)->constrained();
             $table->foreignIdFor(\App\Models\Doctor::class)->constrained();
             $table->foreignIdFor(\App\Models\Drug::class)->constrained();
-            $table->date("date");
+            $table->date("date")->default(now());
             $table->integer("quantity");
             $table->timestamps();
         });
