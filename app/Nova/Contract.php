@@ -31,6 +31,7 @@ class Contract extends Resource
      */
     public static $search = [
         'id',
+        'pharmacy.name',
     ];
 
     /**

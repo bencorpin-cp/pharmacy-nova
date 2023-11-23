@@ -33,6 +33,7 @@ class Drug extends Resource
      */
     public static $search = [
         'id',
+        'trade_name',
     ];
 
     /**
@@ -47,9 +48,11 @@ class Drug extends Resource
             ID::make()->sortable(),
 
             Text::make("Trade Name")
+                ->showWhenPeeking()
                 ->rules("required"),
 
             BelongsTo::make("Drug Manufacturer")
+                ->showWhenPeeking()
                 ->showCreateRelationButton(),
 
             BelongsToMany::make("Available Pharmacies", "pharmacies", Pharmacy::class)

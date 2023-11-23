@@ -31,6 +31,7 @@ class Employee extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     /**
@@ -45,6 +46,7 @@ class Employee extends Resource
             ID::make()->sortable(),
 
             Text::make("Name")
+                ->showWhenPeeking()
                 ->rules("required", "unique:employees"),
 
             HasMany::make("Work Schedules", "works", Work::class),

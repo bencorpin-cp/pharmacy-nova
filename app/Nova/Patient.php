@@ -35,6 +35,7 @@ class Patient extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     /**
@@ -48,11 +49,11 @@ class Patient extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make("Doctor")
-                ->showCreateRelationButton(),
-
             Text::make("Name")
                 ->showWhenPeeking(),
+
+            BelongsTo::make("Doctor")
+                ->showCreateRelationButton(),
 
             Select::make("Sex")
                 ->options([

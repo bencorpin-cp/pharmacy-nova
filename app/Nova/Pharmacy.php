@@ -34,6 +34,7 @@ class Pharmacy extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     /**
@@ -47,11 +48,14 @@ class Pharmacy extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make("Name"),
+            Text::make("Name")
+                ->showWhenPeeking(),
 
-            Text::make("Fax Number", "fax"),
+            Text::make("Fax Number", "fax")
+                ->showWhenPeeking(),
 
-            Textarea::make("Address"),
+            Textarea::make("Address")
+                ->showWhenPeeking(),
 
             BelongsToMany::make("Selling Drugs", "drugs", Drug::class)
                 ->fields(function (){

@@ -31,6 +31,7 @@ class Prescription extends Resource
      */
     public static $search = [
         'id',
+        'patient.name'
     ];
 
     /**
@@ -44,10 +45,10 @@ class Prescription extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make("Doctor"),
-
             BelongsTo::make("Patient")
                 ->showCreateRelationButton(),
+
+            BelongsTo::make("Doctor"),
 
             BelongsTo::make("Drug"),
 

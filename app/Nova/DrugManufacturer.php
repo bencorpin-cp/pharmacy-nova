@@ -32,6 +32,7 @@ class DrugManufacturer extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     /**
@@ -46,9 +47,11 @@ class DrugManufacturer extends Resource
             ID::make()->sortable(),
 
             Text::make("Name")
+                ->showWhenPeeking()
                 ->rules("required"),
 
             Textarea::make("Address")
+                ->showWhenPeeking()
                 ->rules("required"),
 
             HasMany::make("Drugs"),
