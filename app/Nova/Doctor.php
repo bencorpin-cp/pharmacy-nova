@@ -45,10 +45,12 @@ class Doctor extends Resource
             ID::make()->sortable(),
 
             Text::make("Name")
-                ->rules("required"),
+                ->rules("required")
+                ->showWhenPeeking(),
 
             Text::make("Speciality")
-                ->rules("required"),
+                ->rules("required")
+                ->showWhenPeeking(),
 
             HasMany::make("Patients"),
         ];
