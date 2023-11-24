@@ -55,6 +55,8 @@ class Doctor extends Resource
             HasMany::make("Patients"),
 
             HasMany::make("Seens"),
+
+            HasMany::make("Prescriptions"),
         ];
     }
 

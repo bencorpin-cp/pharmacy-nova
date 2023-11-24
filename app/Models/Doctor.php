@@ -18,4 +18,9 @@ class Doctor extends Model
     {
         return $this->hasMany(Seen::class);
     }
+
+    public function prescriptions()
+    {
+        return $this->hasMany(Prescription::class);
+    }
 }
