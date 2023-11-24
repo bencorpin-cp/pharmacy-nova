@@ -53,6 +53,8 @@ class Doctor extends Resource
                 ->showWhenPeeking(),
 
             HasMany::make("Patients"),
+
+            HasMany::make("Seens"),
         ];
     }
 
