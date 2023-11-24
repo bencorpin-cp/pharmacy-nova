@@ -51,9 +51,11 @@ class Contract extends Resource
             BelongsTo::make("Pharmacy")
                 ->showCreateRelationButton(),
 
-            Date::make("Start Date"),
+            Date::make("Start Date")
+                ->rules("required"),
 
-            Date::make("End Date"),
+            Date::make("End Date")
+                ->rules("required"),
         ];
     }
 

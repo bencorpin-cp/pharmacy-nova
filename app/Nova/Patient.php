@@ -50,7 +50,8 @@ class Patient extends Resource
             ID::make()->sortable(),
 
             Text::make("Name")
-                ->showWhenPeeking(),
+                ->showWhenPeeking()
+                ->rules("required"),
 
             BelongsTo::make("Doctor")
                 ->showCreateRelationButton(),
@@ -60,12 +61,15 @@ class Patient extends Resource
                     "Male" => "Male",
                     "Female" => "Female",
                 ])
-                ->showWhenPeeking(),
+                ->showWhenPeeking()
+                ->rules("required"),
 
             Textarea::make("Address")
-                ->showWhenPeeking(),
+                ->showWhenPeeking()
+                ->rules("required"),
 
-            Number::make("Contact Number", "contact_no"),
+            Number::make("Contact Number", "contact_no")
+                ->rules("required"),
 
             HasMany::make("Seens"),
 

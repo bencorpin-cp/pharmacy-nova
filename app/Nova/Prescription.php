@@ -52,9 +52,11 @@ class Prescription extends Resource
 
             BelongsTo::make("Drug"),
 
-            Number::make("Quantity"),
+            Number::make("Quantity")
+                ->rules("required"),
 
             Date::make("Date")
+                ->rules("required")
                 ->default(now()),
         ];
     }

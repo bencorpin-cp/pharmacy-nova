@@ -49,20 +49,26 @@ class Pharmacy extends Resource
             ID::make()->sortable(),
 
             Text::make("Name")
-                ->showWhenPeeking(),
+                ->showWhenPeeking()
+                ->rules("required"),
 
             Text::make("Fax Number", "fax")
-                ->showWhenPeeking(),
+                ->showWhenPeeking()
+                ->rules("required"),
 
             Textarea::make("Address")
-                ->showWhenPeeking(),
+                ->showWhenPeeking()
+                ->rules("required"),
 
             BelongsToMany::make("Selling Drugs", "drugs", Drug::class)
                 ->fields(function (){
                    return [
-                     Number::make("Price"),
+                     Number::make("Price")
+                         ->rules("required"),
                    ];
-                }),
+                })
+                ->showCreateRelationButton()
+                ->required(),
 
             HasMany::make("Employees Schedules", "works", Work::class),
 
