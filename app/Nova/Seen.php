@@ -48,7 +48,7 @@ class Seen extends Resource
 
             Text::make("Date", "created_at")
                 ->displayUsing(function ($value){
-                    return $value->format("m/d/Y H:i A");
+                    return $value->format("m/d/Y h:i A");
                 })
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
